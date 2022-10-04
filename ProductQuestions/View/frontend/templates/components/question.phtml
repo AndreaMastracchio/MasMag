@@ -1,0 +1,114 @@
+<?php
+
+/* @var $block Magento\Framework\View\Element\Template */
+
+use MasMag\ProductQuestions\Helper\Questions;
+
+$questionsHelper = $this->helper(Questions::class);
+$questions = $questionsHelper->getQuestionCollection();
+
+?>
+
+<?php foreach ($questions as $question): ?>
+    <div class="col-md-12 col-xs-12 product-questions--box">
+        <div class="dm-row flex flex--baseline">
+            <div class="col-md-2 col-xs-12">
+                <p class="product-questions--subtitle text text--subtitle text--bold">
+                    <?= __('Domanda') ?>:
+                </p>
+            </div>
+            <div class="col-md-10 col-xs-12  margin-box">
+                <p class="product-questions--question text text--subtitle">
+                    <?= $question->getQuestion() ?>
+                </p>
+            </div>
+        </div>
+        <div class="dm-row flex flex--baseline">
+            <div class="col-md-12 col-xs-12 answers-container">
+                <?php if ($questionsHelper->haveAnswers($question->getId())) : ?>
+                    <?php
+                    $i = 0;
+                    $answers = $questionsHelper->getAnswersArray($question)
+                    ?>
+                    <?php if (count($answers) > 0) : ?>
+                        <div class="col-md-2 col-xs-12 no-padding">
+                            <p class="product-questions--subtitle text text--subtitle text--bold">
+                                <?= __('Risposte') ?>:</p>
+                        </div>
+                        <?php foreach ($answers as $answer): ?>
+                            <?php if ($i <= 5): ?>
+                                <?php $i++; ?>
+                                <div class="dm-row">
+                                    <div class="col-md-12 col-xs-12 no-padding margin-box">
+                                        <p class="product-questions--answer text text--subtitle">
+                                            <?= $answer->getAnswer() ?>
+                                        </p>
+                                        <p class="product-questions--writeby text text--italic">
+                                            <?= __('Scritto da') ?>: <?= $answer->getCustomerName() ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="dm-row">
+                            <div class="col-xs-12">
+                                <p> <?= __('Non si sono ancora risposte') ?> </p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (count($answers) > 5): ?>
+                        <div class="dm-row flex flex--baseline gap-15 order-3">
+                            <div class="col-md-4 no-padding"
+                                 id="question_more_<?= $question->getId() ?>"
+                            >
+                                <button class="show_more_view action black large width-full"
+                                        data-question-id="<?= $question->getId() ?> ">
+                                    <?= __('Mostra altre risposte') ?>
+                                    (<?= count($answers) - 1 ?>)
+                                </button>
+                            </div>
+                            <!--                        <div class="col-md-4 no-padding">
+                                <button class="reply_to_question action black large width-full"
+                                        data-question-id="<?= $question->getId() ?>">
+                                    <?= __('Reply') ?>
+                                </button>
+                            </div>-->
+                        </div>
+                    <?php endif; ?>
+                    <div id="question_<?= $question->getId() ?>" class="dm-row hidden order-2">
+                        <?php foreach ($answers as $answer): ?>
+                            <?php if ($i > 5) : ?>
+                                <div class="dm-row">
+                                    <div class="col-md-12 col-xs-12 no-padding margin-box">
+                                        <p class="product-questions--answer text text--subtitle">
+                                            <?= $answer->getAnswer() ?>
+                                        </p>
+                                        <p class="product-questions--writeby text text--italic">
+                                            <?= __('Scritto da') ?>: <?= $answer->getCustomerName() ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <?php $i++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="dm-row hidden order-4" id="question_less_<?= $question->getId() ?>">
+                        <button class="show_less_view action black large width-full"
+                                data-question-id="<?= $question->getId() ?> "><?= __('Mostra meno risposte') ?></button>
+                    </div>
+                <?php else: ?>
+                    <!--                    <div class="dm-row flex flex--baseline gap-15"-->
+                    <!--                         id="question_more_--><? //= $question->getId() ?><!--">-->
+                    <!--                        <div class="col-md-4 margin-box no-padding">-->
+                    <!--                            <button class="reply_to_question action black large width-full"-->
+                    <!--                                    data-question-id="--><? //= $question->getId() ?><!-- ">-->
+                    <!--                                --><? //= __('Reply') ?>
+                    <!--                            </button>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>

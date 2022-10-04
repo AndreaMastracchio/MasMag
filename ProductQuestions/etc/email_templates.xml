@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="customer_question" label="Question requested - for customer"
+              file="customer_question.html"
+              type="html" module="MasMag_ProductQuestions" area="frontend"/>
+    <template id="customer_question_internal" label="Question requested - internal "
+              file="customer_question_internal.html"
+              type="html" module="MasMag_ProductQuestions" area="frontend"/>
+</config>

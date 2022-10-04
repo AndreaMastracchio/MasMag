@@ -1,0 +1,9 @@
+<!--@subject {{trans "Richiesta Domanda Prodotto %user_product." user_product=$user_product}}  @-->
+{{template config_path="design/email/header_template"}}
+<table>
+    <tr>{{trans "Ciao! abbiamo ricevuto una richiesta una domanda per il prodotto
+        %user_product."user_product=$user_product}}
+    </tr>
+    <tr style="font-size: 14px; font-weight:bold; "> {{trans " dal cliente %user_email. " user_email=$user_email}}</tr>
+</table>
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <free_product>
+            <general>
+                <sampler_enabled>0</sampler_enabled>
+                <sampler_partner/>
+                <sampler_min_partner/>
+                <sampler_no_partner/>
+                <sampler_min_no_partner/>
+            </general>
+        </free_product>
+    </default>
+</config>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="masmag" translate="label" sortOrder="10">
+            <label>MasMag - Nightmare</label>
+        </tab>
+        <section id="free_product" translate="label" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Free product</label>
+            <tab>masmag</tab>
+            <resource>MasMag_FreeProduct::free_product</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="sampler_enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Attiva</label>
+                    <comment>Abilita il prodotto gratutito *il prodotto deve esistere</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="free_product_partner" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Customer Partner</label>
+                <field id="sampler_partner" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Sku</label>
+                    <comment>Sku prodotto in omaggio Gruppo 1</comment>
+                    <source_model>MasMag\FreeProduct\Model\Config\ProductList</source_model>
+                </field>
+                <field id="sampler_min_partner" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Minimo carrello</label>
+                    <comment>Minimo acquisto  in omaggio Gruppo 1</comment>
+                </field>
+            </group>
+            <group id="free_product_no_partner" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Customer No Partner</label>
+                <field id="sampler_no_partner" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sku</label>
+                    <comment>Sku prodotto in omaggio Gruppo 2</comment>
+                    <source_model>MasMag\FreeProduct\Model\Config\ProductList</source_model>
+                </field>
+                <field id="sampler_min_no_partner" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Minimo carrello</label>
+                    <comment>Minimo acquisto  in omaggio Gruppo 2</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

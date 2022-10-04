@@ -1,0 +1,12 @@
+<!--@subject {{trans "Domanda Prodotto %user_product." user_product=$user_product}}  @-->
+{{template config_path="design/email/header_template"}}
+<table>
+    <tr>{{trans "Ciao %user_name! la tua domanda é stata inviata correttamente." user_name=$user_name}}</tr>
+    <tr style="font-size: 14px; font-weight:bold; "> {{trans " riceverai una email appena un operatore ti risponderá.
+        "}}
+    </tr>
+    <tr style="font-size: 14px; font-weight:bold; "> {{trans " Grazie mille! "}}</tr>
+    <tr style="font-size: 14px; font-weight:bold; "> {{trans " Team MasMag "}}</tr>
+
+</table>
+{{template config_path="design/email/footer_template"}}

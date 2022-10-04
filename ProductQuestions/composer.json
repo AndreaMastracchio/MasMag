@@ -1,0 +1,26 @@
+{
+    "name": "masmag/module-productquestions",
+    "description": "MasMag product page customer questions",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "Andrea Mastracchio",
+            "email": "gregorioandrea.mastracchio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MasMag\\ProductQuestions\\": ""
+        }
+    }
+}

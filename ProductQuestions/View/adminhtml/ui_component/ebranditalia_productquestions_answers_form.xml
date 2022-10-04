@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                masmag_productquestions_answers_form.answers_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="MasMag\ProductQuestions\Block\Adminhtml\Answers\Edit\BackButton"/>
+            <button name="delete" class="MasMag\ProductQuestions\Block\Adminhtml\Answers\Edit\DeleteButton"/>
+            <button name="save" class="MasMag\ProductQuestions\Block\Adminhtml\Answers\Edit\SaveButton"/>
+            <button name="save_and_continue"
+                    class="MasMag\ProductQuestions\Block\Adminhtml\Answers\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <namespace>masmag_productquestions_answers_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>masmag_productquestions_answers_form.answers_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="answers_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="answers_form_data_source" class="MasMag\ProductQuestions\Model\Answers\DataProvider">
+            <settings>
+                <requestFieldName>answers_id</requestFieldName>
+                <primaryFieldName>answers_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label>General</label>
+        </settings>
+        <field name="customer_name" formElement="input" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Answers</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">customer_name</label>
+                <dataScope>customer_name</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="customer_email" formElement="input" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Answers</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">customer_email</label>
+                <dataScope>customer_email</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="answer" formElement="input" sortOrder="70">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Answers</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">answer</label>
+                <dataScope>answer</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="questions_id" formElement="input" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Answers</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">questions_id</label>
+                <dataScope>questions_id</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="is_approved" formElement="checkbox" sortOrder="90">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Answers</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="notices" xsi:type="array">
+                        <item name="0" xsi:type="string" translate="true">Non attiva</item>
+                        <item name="1" xsi:type="string" translate="true">Attiva</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Domanda attiva</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

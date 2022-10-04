@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MasMag\ProductQuestions\Api\QuestionsRepositoryInterface"
+                type="MasMag\ProductQuestions\Model\QuestionsRepository"/>
+    <preference for="MasMag\ProductQuestions\Api\Data\QuestionsInterface"
+                type="MasMag\ProductQuestions\Model\Questions"/>
+    <preference for="MasMag\ProductQuestions\Api\Data\QuestionsSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="MasMag\ProductQuestions\Model\ResourceModel\Questions\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">masmag_productquestions_questions</argument>
+            <argument name="resourceModel" xsi:type="string">
+                MasMag\ProductQuestions\Model\ResourceModel\Questions\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="masmag_productquestions_questions_listing_data_source" xsi:type="string">
+                    MasMag\ProductQuestions\Model\ResourceModel\Questions\Grid\Collection
+                </item>
+                <item name="masmag_productquestions_answers_listing_data_source" xsi:type="string">
+                    MasMag\ProductQuestions\Model\ResourceModel\Answers\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="MasMag\ProductQuestions\Api\AnswersRepositoryInterface"
+                type="MasMag\ProductQuestions\Model\AnswersRepository"/>
+    <preference for="MasMag\ProductQuestions\Api\Data\AnswersInterface"
+                type="MasMag\ProductQuestions\Model\Answers"/>
+    <preference for="MasMag\ProductQuestions\Api\Data\AnswersSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="MasMag\ProductQuestions\Model\ResourceModel\Answers\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">masmag_productquestions_answers</argument>
+            <argument name="resourceModel" xsi:type="string">
+                MasMag\ProductQuestions\Model\ResourceModel\Answers\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+
+
+    <preference for="MasMag\ProductQuestions\Api\CreateAnswerInterface"
+                type="MasMag\ProductQuestions\Model\CreateAnswer"/>
+
+</config>

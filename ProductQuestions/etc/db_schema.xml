@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="masmag_productquestions_questions" resource="default" engine="innodb"
+           comment="masmag_productquestions_questions Table">
+        <column xsi:type="int" name="questions_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="questions_id"/>
+        </constraint>
+        <column name="customer_name" nullable="true" xsi:type="varchar" comment="customer name " length="255"/>
+        <column name="customer_email" nullable="true" xsi:type="varchar" comment="customer_email" length="255"/>
+        <column name="question" nullable="true" xsi:type="varchar" comment="question" length="255"/>
+        <column name="is_approved" nullable="true" xsi:type="boolean" comment="is_approved"/>
+        <column name="product_sku" nullable="true" xsi:type="varchar" comment="product_sku" length="255"/>
+    </table>
+    <table name="masmag_productquestions_answers" resource="default" engine="innodb"
+           comment="masmag_productquestions_answers Table">
+        <column xsi:type="int" name="answers_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="answers_id"/>
+        </constraint>
+        <column xsi:type="int" name="questions_id" padding="10" unsigned="true" nullable="false"
+                comment="Entity Id"/>
+        <column name="customer_name" nullable="true" xsi:type="varchar" comment="customer_name" length="255"/>
+        <column name="customer_email" nullable="true" xsi:type="varchar" comment="customer_email" length="255"/>
+        <column name="answer" nullable="true" xsi:type="varchar" comment="answer" length="255"/>
+        <column name="is_approved" nullable="true" xsi:type="boolean" comment="is_approved"/>
+        <constraint xsi:type="foreign" referenceId="QUESTIONID_PRIMARY" table="masmag_productquestions_answers"
+                    column="questions_id" referenceTable="masmag_productquestions_questions"
+                    referenceColumn="questions_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>

@@ -1,0 +1,28 @@
+{
+    "name": "masmag/module-order-from",
+    "description": "N/A",
+    "require": {
+        "php": "^7.4",
+        "magento/framework": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "type": "magento2-module",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "Andrea Gregorio Mastracchio",
+            "email": "andreamastracchio@live.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magento\\OrderFrom\\": ""
+        }
+    }
+}
+

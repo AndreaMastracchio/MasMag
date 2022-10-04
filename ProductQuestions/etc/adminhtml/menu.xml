@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MasMag::top_level" title="MasMag" module="MasMag_ProductQuestions" sortOrder="80"
+             resource="Magento_Backend::content"/>
+        <add id="MasMag_ProductQuestions::masmag_productquestions_questions" title="Questions"
+             module="MasMag_ProductQuestions" sortOrder="9999" resource="Magento_Backend::content"
+             parent="MasMag::top_level" action="masmag_productquestions/questions/index"/>
+    </menu>
+</config>

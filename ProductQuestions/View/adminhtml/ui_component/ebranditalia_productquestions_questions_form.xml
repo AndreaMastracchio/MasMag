@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                masmag_productquestions_questions_form.questions_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="MasMag\ProductQuestions\Block\Adminhtml\Questions\Edit\BackButton"/>
+            <button name="delete" class="MasMag\ProductQuestions\Block\Adminhtml\Questions\Edit\DeleteButton"/>
+            <button name="save" class="MasMag\ProductQuestions\Block\Adminhtml\Questions\Edit\SaveButton"/>
+            <button name="save_and_continue"
+                    class="MasMag\ProductQuestions\Block\Adminhtml\Questions\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <namespace>masmag_productquestions_questions_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>masmag_productquestions_questions_form.questions_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="questions_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="questions_form_data_source"
+                      class="MasMag\ProductQuestions\Model\Questions\DataProvider">
+            <settings>
+                <requestFieldName>questions_id</requestFieldName>
+                <primaryFieldName>questions_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label>Configurazione Domanda</label>
+        </settings>
+        <field name="is_approved" formElement="checkbox" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Questions</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="notices" xsi:type="array">
+                        <item name="0" xsi:type="string" translate="true">Non attiva</item>
+                        <item name="1" xsi:type="string" translate="true">Attiva</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Domanda attiva</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="product_sku" formElement="input" sortOrder="90">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Questions</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">product_sku</label>
+                <dataScope>product_sku</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

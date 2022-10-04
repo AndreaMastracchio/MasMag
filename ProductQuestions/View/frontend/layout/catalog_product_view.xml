@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="customer_questions" before="product.info.product_additional_data"
+                   template="MasMag_ProductQuestions::customer_questions.phtml">
+                <block name="product_question" as="question"
+                       template="MasMag_ProductQuestions::components/question.phtml"/>
+                <block name="product_question_form" as="question_form"
+                       template="MasMag_ProductQuestions::components/question-form.phtml"/>
+                <block name="product_question_make" as="question_make"
+                       template="MasMag_ProductQuestions::components/question-make.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

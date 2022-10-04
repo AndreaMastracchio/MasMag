@@ -1,0 +1,26 @@
+{
+    "name": "masmag/customersession",
+    "description": "Extension for customer session on FPC",
+    "require": {
+        "magento/framework": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "type": "magento2-module",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "Andrea Gregorio Mastracchio",
+            "email": "andreamastracchio@live.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MasMag\\CustomerSession\\": ""
+        }
+    }
+}

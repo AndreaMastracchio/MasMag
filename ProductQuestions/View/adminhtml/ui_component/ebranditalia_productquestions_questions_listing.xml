@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                masmag_productquestions_questions_listing.masmag_productquestions_questions_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>masmag_productquestions_questions_columns</spinner>
+        <deps>
+            <dep>
+                masmag_productquestions_questions_listing.masmag_productquestions_questions_listing_data_source
+            </dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new Questions</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="masmag_productquestions_questions_listing_data_source"
+                component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">questions_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>MasMag_ProductQuestions::Questions</aclResource>
+        <dataProvider name="masmag_productquestions_questions_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>questions_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="masmag_productquestions_questions_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>questions_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="questions_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="customer_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">customer_name</label>
+            </settings>
+        </column>
+        <column name="customer_email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">customer_email</label>
+            </settings>
+        </column>
+        <column name="question">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">question</label>
+            </settings>
+        </column>
+        <column name="is_approved">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">is_approved</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="product_sku">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">product_sku</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions"
+                       class="MasMag\ProductQuestions\Ui\Component\Listing\Column\QuestionsActions">
+            <settings>
+                <indexField>questions_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

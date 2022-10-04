@@ -1,0 +1,115 @@
+@color-red-primary: red;
+
+& when (@media-common = true) {
+
+    .customer-question {
+
+        &--box {
+            gap: 25px;
+            display: grid;
+            margin: 30px 0;
+        }
+
+    // Error message customer question form
+    input[aria-invalid="true"], textarea[aria-invalid="true"] {
+      border: 1px solid @color-red-primary;
+    }
+
+    label.error {
+      position: absolute;
+      width: 100%;
+      display: block;
+      margin-top: 3px;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      font-weight: 400;
+      color: @color-red-primary;
+    }
+
+  }
+
+  .secondary-custom {
+    padding: 12px 15px;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 0;
+    letter-spacing: 0.7px;
+  }
+
+  .product-questions-container {
+
+    border-top: 2px solid #0587bb;
+    border-bottom: 2px solid #b1b1b1;
+    background-color: #f8f8f8;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 15px -20px;
+
+    .product-questions {
+
+      &--title {
+        font-family: 'Dosis', sans-serif;
+        color: #0587BB;
+        font-size: 24px;
+        line-height: 26px;
+        letter-spacing: 1.5px;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 500;
+        padding-top: 15px;
+        padding-bottom: 25px;
+      }
+
+      &--box {
+        border-bottom: 1px solid #b1b1b1;
+        padding-top: 15px;
+        padding-bottom: 5px;
+      }
+
+      .answers-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+    }
+
+    .margin-box {
+      margin: 10px 0;
+    }
+
+    // Utils
+    .width-full {
+      width: 100%;
+    }
+
+    .no-padding {
+      padding: 0;
+    }
+
+    .fake-col {
+      width: 92%;
+    }
+
+    .order-3 {
+      order: 3;
+    }
+
+    .order-2 {
+      order: 2
+    }
+
+    .order-4 {
+      order: 4;
+    }
+
+  }
+
+}
+
+@media screen and ( max-width: @screen__m) {
+  .product-questions-container {
+    margin: 15px 0;
+  }
+}

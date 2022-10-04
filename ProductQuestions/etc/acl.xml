@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="MasMag_ProductQuestions::Questions" title="Questions" sortOrder="10">
+                    <resource id="MasMag_ProductQuestions::Questions_save" title="Save Questions" sortOrder="10"/>
+                    <resource id="MasMag_ProductQuestions::Questions_delete" title="Delete Questions"
+                              sortOrder="20"/>
+                    <resource id="MasMag_ProductQuestions::Questions_update" title="Update Questions"
+                              sortOrder="30"/>
+                    <resource id="MasMag_ProductQuestions::Questions_view" title="View Questions" sortOrder="40"/>
+                </resource>
+                <resource id="MasMag_ProductQuestions::Answers" title="Answers" sortOrder="10">
+                    <resource id="MasMag_ProductQuestions::Answers_save" title="Save Answers" sortOrder="10"/>
+                    <resource id="MasMag_ProductQuestions::Answers_delete" title="Delete Answers" sortOrder="20"/>
+                    <resource id="MasMag_ProductQuestions::Answers_update" title="Update Answers" sortOrder="30"/>
+                    <resource id="MasMag_ProductQuestions::Answers_view" title="View Answers" sortOrder="40"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

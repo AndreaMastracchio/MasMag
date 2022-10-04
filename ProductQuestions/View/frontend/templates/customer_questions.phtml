@@ -1,0 +1,60 @@
+<?php
+
+/* @var $block Magento\Framework\View\Element\Template */
+
+use MasMag\ProductQuestions\Helper\Questions;
+
+$questionsHelper = $this->helper(Questions::class);
+$have_questions = $questionsHelper->haveQuestions();
+
+?>
+
+<div id="product-questions-container" class="product-questions-container"
+     data-bind="scope: 'customerQuestions'">
+    <?php if ($have_questions): ?>
+        <div class="product-questions" id="all_questions">
+            <div class="dm-row flex justify-center item-center">
+                <h5 class="product-questions--title text text--center">
+                    <?= __('Domande e risposte') ?>
+                </h5>
+            </div>
+            <div class="dm-row">
+                <?= $block->getChildHtml('question') ?>
+            </div>
+            <?= $block->getChildHtml('question_make') ?>
+        </div>
+    <?php else: ?>
+        <div class="dm-row flex justify-center item-center">
+            <h5 class="product-questions--title text text--center">
+                <?= __('There is no demand for this product yet') ?>
+            </h5>
+        </div>
+        <?= $block->getChildHtml('question_make') ?>
+    <?php endif; ?>
+    <?= $block->getChildHtml('question_form') ?>
+</div>
+
+
+<script type="text/x-magento-init">
+
+    {
+        "#product-questions-container": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "customerQuestions": {
+                        "component": "MasMag_ProductQuestions/js/customer-questions",
+                        "template": "MasMag_ProductQuestions/customer-questions",
+                        "sku": "<?= $questionsHelper->getCurrentProduct()->getSku() ?>"
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+</script>
+

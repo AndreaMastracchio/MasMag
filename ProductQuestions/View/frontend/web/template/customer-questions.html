@@ -1,0 +1,67 @@
+<!-- Open questions -->
+<div class="customer-question">
+    <h5 class="product-questions--title text text--title text--center"
+        data-bind="i18n: 'Write your question'">
+    </h5>
+    <form class="customer-question--box"
+          data-bind="submit: handleQuestion"
+          id="customer-question-form"
+    >
+        <div class="dm-row flex gap-15">
+            <div class="col-md-4 col-xs-12">
+                <label data-bind="i18n: 'Name'" for="firstname"> </label>
+                <input class="required-entry letters-only"
+                       data-bind="textInput: firstname, attr: { placeholder: 'Mario' }"
+                       id="firstname" name="firstname"
+                       type="text"
+                />
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <label data-bind="i18n: 'Cognome'" for="surname"></label>
+                <input class="required-entry letters-only"
+                       data-bind="textInput: surname, attr: { placeholder: 'Rossi' } "
+                       id="surname" name="surname"
+                       type="text"
+                />
+            </div>
+        </div>
+        <div class="dm-row">
+            <div class="col-xs-12 col-md-12">
+                <label data-bind="i18n: 'Email'" for="email"></label>
+                <input class="required-entry validate-email"
+                       data-bind="textInput:email, attr: { placeholder: 'mariorossi@gmail.com' } "
+                       id="email" name="email"
+                       type="email"/>
+            </div>
+        </div>
+        <div class="dm-row">
+            <div class="col-xs-12 col-md-12">
+                <label data-bind="i18n: 'Scrivi la tua domanda'" for="message"></label>
+                <textarea class="required-entry minimum-length-2"
+                          data-bind="textInput: message, attr: { placeholder: 'Scrivi qui la tua domanda' } "
+                          id="message" name="message">
+                </textarea>
+            </div>
+        </div>
+        <div class="dm-row flex justify-center" id="product-question-button">
+            <div class="col-md-4 col-xs-12">
+                <button class="action primary width-full" type="submit">
+                    <span class="text text--uppercase" data-bind="i18n: 'Invia'"></span>
+                </button>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <button class="action secondary secondary-custom width-full" data-bind="click: returnToQuestions">
+                    <span class="text text--uppercase"
+                          data-bind="i18n: 'Ritorna alle domande'"></span>
+                </button>
+            </div>
+        </div>
+        <div class="dm-row--padded flex justify-center item-center hidden" id="form-question-success">
+            <h3 data-bind="i18n: 'Grazie per averci contattato! Riceverai un email non appena un operatore risponderá alla tua domanda! Controlla la tua email'"></h3>
+        </div>
+    </form>
+
+</div>
+<!-- End open questions -->
+
+

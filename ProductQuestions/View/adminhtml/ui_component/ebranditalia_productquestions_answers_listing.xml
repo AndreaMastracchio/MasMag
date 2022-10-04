@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                masmag_productquestions_answers_listing.masmag_productquestions_answers_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>masmag_productquestions_answers_columns</spinner>
+        <deps>
+            <dep>
+                masmag_productquestions_answers_listing.masmag_productquestions_answers_listing_data_source
+            </dep>
+        </deps>
+        <buttons>
+            <button name="new_answer_button"
+                    class="MasMag\ProductQuestions\Block\Adminhtml\Answers\Edit\NewAnswer"
+            />
+            <button name="back_to_questions_button"
+                    class="MasMag\ProductQuestions\Block\Adminhtml\Answers\Edit\BackToQuestions"
+            />
+        </buttons>
+    </settings>
+    <dataSource name="masmag_productquestions_answers_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">
+                MasMag\ProductQuestions\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
+            <argument name="name" xsi:type="string">masmag_productquestions_answers_listing_data_source
+            </argument>
+            <argument name="primaryFieldName" xsi:type="string">answers_id</argument>
+            <argument name="requestFieldName" xsi:type="string">answers_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">ids</item>
+                        <item name="dataScope" xsi:type="string">answers_id</item>
+                    </item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="questions_id" xsi:type="string">*</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="masmag_productquestions_answers_columns">
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">
+                    masmag_productquestions_answers_listing.masmag_productquestions_answers_listing.masmag_productquestions_answers_columns.ids
+                </param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">answers_id</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="masmag_productquestions/Answers/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        masmag_productquestions_answers_listing.masmag_productquestions_answers_listing.masmag_productquestions_answers_columns_editor
+                    </item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>answers_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="answers_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="customer_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">customer_name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="MasMag\ProductQuestions\Ui\Component\Listing\Column\AnswersActions">
+            <settings>
+                <indexField>answers_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+        <column name="customer_email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">customer_email</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="answer">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">answer</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="is_approved">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">is_approved</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+    </columns>
+</listing>

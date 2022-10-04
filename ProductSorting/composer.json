@@ -1,0 +1,22 @@
+{
+  "name": "masmag/product-sorting",
+  "description": "MasMag product stock sorting",
+  "type": "magento2-module",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrea Mastracchio",
+      "email": "andreamastracchio@live.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MasMag\\ProductSorting\\": ""
+    }
+  }
+}
