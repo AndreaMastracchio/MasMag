@@ -1,0 +1,19 @@
+<?php
+
+use MasMag\PromoMessage\Helper\PromoMessage;
+
+$promoHelper = $this->helper(PromoMessage::class);
+
+$is_enabled = $promoHelper->messageIsEnabled();
+$label = false;
+if ($is_enabled) {
+    $label = $promoHelper->getFreeMessage();
+}
+
+?>
+
+<?php if ($label) : ?>
+    <div class="promo-message checkout">
+        <p><?= $label ?></p>
+    </div>
+<?php endif ?>
