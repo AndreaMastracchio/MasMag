@@ -49,7 +49,7 @@ class PromoMessage extends AbstractHelper
         if ($quote_totals > $config_quote) {
             return '';
         }
-        return 'Ti mancano ' . ($config_quote - $quote_totals) . ' euro per raggiungere la spedizione gratuita!';
+        return __('You are %1 euro short of free shipping!', ($config_quote - $quote_totals));
     }
 
     /**
